@@ -12,3 +12,11 @@ after_success:
   - docker biuld -t sriraj14/multi-nginx ./nginx
   - docker build -t sriraj14/multi-server ./server
   - docker build -t sriraj14/multi-worker ./worker
+# login to docker CLI
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  - docker push sriraj14/multi-client
+  - docker push sriraj14/multi-server
+  - docker push sriraj14/multi-worker
+  - docker push sriraj14/multi-nginx
+
+
